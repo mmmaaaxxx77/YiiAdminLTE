@@ -11,7 +11,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
-    <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/plugin/bootstrap/css/bootstrap.min.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <!-- Ionicons -->
@@ -359,11 +359,11 @@ desired effect
 <!-- REQUIRED JS SCRIPTS -->
 
 <!-- jQuery 2.1.4 -->
-<script src="<?php echo Yii::app()->request->baseUrl; ?>/assets/jQuery/jQuery-2.1.4.min.js"></script>
+<script src="<?php echo Yii::app()->request->baseUrl; ?>/plugin/jQuery/jQuery-2.1.4.min.js"></script>
 <!-- Bootstrap 3.3.5 -->
-<script src="<?php echo Yii::app()->request->baseUrl; ?>/assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="<?php echo Yii::app()->request->baseUrl; ?>/plugin/bootstrap/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
-<script src="<?php echo Yii::app()->request->baseUrl; ?>/assets/app.min.js"></script>
+<script src="<?php echo Yii::app()->request->baseUrl; ?>/jacascript/app.min.js"></script>
 
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the
