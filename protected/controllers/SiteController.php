@@ -27,9 +27,11 @@ class SiteController extends Controller
 	 */
 	public function actionIndex()
 	{
-		// renders the view file 'protected/views/site/index.php'
-		// using the default layout 'protected/views/layouts/main.php'
-		$this->render('index');
+		if(Yii::app()->user->isGuest)
+			$this->renderPartial('login');
+		else
+			$this->render('index');
+		
 	}
 
 	/**
@@ -77,7 +79,27 @@ class SiteController extends Controller
 	 */
 	public function actionLogin()
 	{
-		$model=new LoginForm;
+		//echo var_dump($_POST);
+		if (!empty($_POST['username']) && !empty($_POST['password']))
+		{
+			$identity = new UserIdentity($_POST['username'], $_POST['password']);
+			if ($identity->authenticate())
+			{
+				Yii::app()->user->login($identity, 3600*24*7);
+				//Yii::app()->user->setFlash('success', $this->setFlashMessage('Is Sign In NOW.'));
+				$this->redirect(Yii::app()->createUrl('site/index'));
+			}
+			else
+			{
+				//Yii::app()->user->setFlash('error', $this->setFlashMessage("please Singn In. {$identity->errorMessage}"));
+				//Yii::app()->user->logout();
+			}
+
+		}
+		$this->renderPartial('login');
+
+
+		/*$model=new LoginForm;
 
 		// if it is ajax validation request
 		if(isset($_POST['ajax']) && $_POST['ajax']==='login-form')
@@ -95,7 +117,7 @@ class SiteController extends Controller
 				$this->redirect(Yii::app()->user->returnUrl);
 		}
 		// display the login form
-		$this->render('login',array('model'=>$model));
+		$this->render('login',array('model'=>$model));*/
 	}
 
 	/**

@@ -171,7 +171,7 @@ desired effect
                             <!-- The user image in the navbar-->
                             <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/img/user2-160x160.jpg" class="user-image" alt="User Image">
                             <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                            <span class="hidden-xs"><?=Yii::app()->user->email?></span>
+                            <span class="hidden-xs">Alexander Pierce</span>
                         </a>
                         <ul class="dropdown-menu">
                             <!-- The user image in the menu -->
@@ -200,7 +200,7 @@ desired effect
                                     <a href="#" class="btn btn-default btn-flat">Profile</a>
                                 </div>
                                 <div class="pull-right">
-                                    <a href="<?php echo Yii::app()->createUrl("site/login"); ?>" class="btn btn-default btn-flat">Sign out</a>
+                                    <a href="#" class="btn btn-default btn-flat">Sign out</a>
                                 </div>
                             </li>
                         </ul>
