@@ -20,4 +20,21 @@ class Controller extends CController
 	 * for more details on how to specify this property.
 	 */
 	public $breadcrumbs=array();
+
+	public function beforeAction($action) {
+		if( parent::beforeAction($action) ) {
+			/* @var $cs CClientScript */
+			$cs = Yii::app()->clientScript;
+			$cs->registerScriptFile(Yii::app()->request->baseUrl . '/plugin/jQuery/jQuery-2.1.4.min.js' );
+			$cs->registerScriptFile(Yii::app()->request->baseUrl . '/plugin/bootstrap/js/bootstrap.min.js' );
+			$cs->registerScriptFile(Yii::app()->request->baseUrl . '/jacascript/app.min.js' );
+			$cs->registerScriptFile(Yii::app()->request->baseUrl . '/jacascript/knockout/knockout-3.3.0.js' );
+			$cs->registerScriptFile(Yii::app()->request->baseUrl . '/jacascript/knockout/knockout.mapping.js' );
+			$cs->registerScriptFile(Yii::app()->request->baseUrl . '/jacascript/default/defaultFunctions.js' );
+			$cs->registerScriptFile(Yii::app()->request->baseUrl . '/jacascript/default/defaultModel.js' );
+			$cs->registerScriptFile(Yii::app()->request->baseUrl . '/jacascript/default/default.js' );
+			return true;
+		}
+		return false;
+	}
 }

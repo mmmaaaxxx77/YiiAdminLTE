@@ -11,5 +11,11 @@ return array(
 	'password' => 'test',
 	'charset' => 'utf8',
 
+	/*'connectionString' => 'mysql:host=localhost;dbname=guoguang_johnnydesign',
+	'emulatePrepare' => true,
+	'username' => 'guoguang_johnny',
+	'password' => 'max112345',
+	'charset' => 'utf8',*/
+
 );
 

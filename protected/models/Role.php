@@ -6,11 +6,10 @@
  * Date: 4/8/16
  * Time: 2:05 PM
  */
-class Account extends CActiveRecord
+class Role extends CActiveRecord
 {
+    public $name;
 
-    //public $role;
-    //public $permissions;
 
     public static function model($className = __CLASS__)
     {
@@ -19,7 +18,7 @@ class Account extends CActiveRecord
 
     public function tableName()
     {
-        return "Account";
+        return "Role";
     }
 
     public function primaryKey() {
@@ -28,9 +27,7 @@ class Account extends CActiveRecord
 
     public function relations(){
         return array(
-            //'role'=>array(self::HAS_ONE, 'Role', 'id'),
-            'roles'=>array(self::MANY_MANY, 'Role', 'Account_Role(account_id, role_id)'),
-            'permissions'=>array(self::MANY_MANY, 'Permission', 'Account_Permission(account_id, permission_id)')
+            //'account'=>array(self::BELONGS_TO, 'Account', 'role_id')
         );
     }
 

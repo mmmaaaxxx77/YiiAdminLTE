@@ -2,6 +2,17 @@
 
 class SiteController extends Controller
 {
+
+	public function beforeAction($action) {
+		if( parent::beforeAction($action) ) {
+			/* @var $cs CClientScript */
+			$cs = Yii::app()->clientScript;
+			$cs->registerScriptFile(Yii::app()->request->baseUrl . '/jacascript/page/dashboard/dashboard.js' );
+			return true;
+		}
+		return false;
+	}
+
 	/**
 	 * Declares class-based actions.
 	 */
@@ -28,9 +39,9 @@ class SiteController extends Controller
 	public function actionIndex()
 	{
 		if(Yii::app()->user->isGuest)
-			$this->renderPartial('login');
+			$this->renderPartial('/security/login', array('message'=>''));
 		else
-			$this->render('index');
+			$this->render('/dashboard/index');
 		
 	}
 
@@ -46,86 +57,5 @@ class SiteController extends Controller
 			else
 				$this->render('error', $error);
 		}
-	}
-
-	/**
-	 * Displays the contact page
-	 */
-	public function actionContact()
-	{
-		$model=new ContactForm;
-		if(isset($_POST['ContactForm']))
-		{
-			$model->attributes=$_POST['ContactForm'];
-			if($model->validate())
-			{
-				$name='=?UTF-8?B?'.base64_encode($model->name).'?=';
-				$subject='=?UTF-8?B?'.base64_encode($model->subject).'?=';
-				$headers="From: $name <{$model->email}>\r\n".
-					"Reply-To: {$model->email}\r\n".
-					"MIME-Version: 1.0\r\n".
-					"Content-Type: text/plain; charset=UTF-8";
-
-				mail(Yii::app()->params['adminEmail'],$subject,$model->body,$headers);
-				Yii::app()->user->setFlash('contact','Thank you for contacting us. We will respond to you as soon as possible.');
-				$this->refresh();
-			}
-		}
-		$this->render('contact',array('model'=>$model));
-	}
-
-	/**
-	 * Displays the login page
-	 */
-	public function actionLogin()
-	{
-		//echo var_dump($_POST);
-		if (!empty($_POST['username']) && !empty($_POST['password']))
-		{
-			$identity = new UserIdentity($_POST['username'], $_POST['password']);
-			if ($identity->authenticate())
-			{
-				Yii::app()->user->login($identity, 3600*24*7);
-				//Yii::app()->user->setFlash('success', $this->setFlashMessage('Is Sign In NOW.'));
-				$this->redirect(Yii::app()->createUrl('site/index'));
-			}
-			else
-			{
-				//Yii::app()->user->setFlash('error', $this->setFlashMessage("please Singn In. {$identity->errorMessage}"));
-				//Yii::app()->user->logout();
-			}
-
-		}
-		$this->renderPartial('login');
-
-
-		/*$model=new LoginForm;
-
-		// if it is ajax validation request
-		if(isset($_POST['ajax']) && $_POST['ajax']==='login-form')
-		{
-			echo CActiveForm::validate($model);
-			Yii::app()->end();
-		}
-
-		// collect user input data
-		if(isset($_POST['LoginForm']))
-		{
-			$model->attributes=$_POST['LoginForm'];
-			// validate user input and redirect to the previous page if valid
-			if($model->validate() && $model->login())
-				$this->redirect(Yii::app()->user->returnUrl);
-		}
-		// display the login form
-		$this->render('login',array('model'=>$model));*/
-	}
-
-	/**
-	 * Logs out the current user and redirect to homepage.
-	 */
-	public function actionLogout()
-	{
-		Yii::app()->user->logout();
-		$this->redirect(Yii::app()->homeUrl);
 	}
 }

@@ -25,11 +25,11 @@
 <body class="hold-transition login-page">
 <div class="login-box">
     <div class="login-logo">
-        <a href="<?php echo Yii::app()->createUrl("main"); ?>"><b>Admin</b>LTE</a>
+        <a href="<?php echo Yii::app()->createUrl("/"); ?>"><b>Johnny D.</b>CMS</a>
     </div><!-- /.login-logo -->
     <div class="login-box-body">
-        <p class="login-box-msg">Sign in to start your session</p>
-        <form name="LoginForm" action="<?php echo Yii::app()->createUrl("site/login"); ?>" method="POST">
+        <p class="login-box-msg"></p>
+        <form name="LoginForm" action="<?php echo Yii::app()->createUrl("security/login"); ?>" method="POST">
             <div class="form-group has-feedback">
                 <input type="text" name="username" class="form-control" placeholder="Email">
                 <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
@@ -41,7 +41,7 @@
             <div class="row">
                 <div class="col-xs-12">
                     <?php echo $message; ?>
-                    <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+                    <button type="submit" class="btn btn-primary btn-block btn-flat">登入</button>
                 </div><!-- /.col -->
             </div>
         </form>

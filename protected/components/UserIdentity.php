@@ -25,7 +25,7 @@ class UserIdentity extends CUserIdentity
 
 		$user = Account::model()->findByAttributes(array('name' => $this->username));
 		if ($user === null)
-			$this->errorCode = self::ERROR_USER_USERNAME_INVALID;
+			$this->errorCode = self::ERROR_USERNAME_INVALID;
 		else if ($user->password != $this->password)
 			$this->errorCode = self::ERROR_PASSWORD_INVALID;
 		else
@@ -34,7 +34,6 @@ class UserIdentity extends CUserIdentity
 			$this->setState('email', $user->email);
 			$this->errorCode = self::ERROR_NONE;
 		}
-		//unset($user);
 		return !$this->errorCode;
 	}
 }
