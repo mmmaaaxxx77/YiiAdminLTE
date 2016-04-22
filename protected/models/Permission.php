@@ -9,7 +9,21 @@
 class Permission extends CActiveRecord
 {
 
+    public $id;
+    public $codename;
+    public $name;
 
+    public function __construct()
+    {
+        parent::__construct();
+    }
+
+    public function beforeSave() {
+        if ($this->isNewRecord) {
+            $this->id = Yii::app()->db->createCommand('select UUID()')->queryScalar();
+        }
+        return parent::beforeSave();
+    }
 
     public static function model($className = __CLASS__)
     {

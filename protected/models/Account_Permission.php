@@ -9,6 +9,8 @@
 class Account_Permission extends CActiveRecord
 {
 
+    public $account_id;
+    public $permission_id;
 
 
     public static function model($className = __CLASS__)
@@ -25,7 +27,5 @@ class Account_Permission extends CActiveRecord
         return array('account_id', 'permission_id');
     }
 
-    public function relations(){
-    }
 
 }

@@ -8,6 +8,7 @@
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'My Web Application',
+	'sourceLanguage'=>'en',
 
 	// preloading 'log' component
 	'preload'=>array('log'),
@@ -16,6 +17,7 @@ return array(
 	'import'=>array(
 		'application.models.*',
 		'application.components.*',
+		'application.viewmodels.*',
 	),
 
 	'modules'=>array(

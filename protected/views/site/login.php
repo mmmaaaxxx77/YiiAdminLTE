@@ -53,5 +53,14 @@
 <script src="<?php echo Yii::app()->request->baseUrl; ?>/plugin/jQuery/jQuery-2.1.4.min.js"></script>
 <!-- Bootstrap 3.3.5 -->
 <script src="<?php echo Yii::app()->request->baseUrl; ?>/plugin/bootstrap/js/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+    function hashPassword() {
+        var hash = CryptoJS.MD5($("input[name='password']").val());
+        //$("input[name='password']").val(hash);
+        return true;
+    }
+</script>
+
 </body>
 </html>

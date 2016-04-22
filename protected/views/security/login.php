@@ -13,7 +13,7 @@
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Theme style -->
-    <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/plugin/adminLTE/css/AdminLTE.min.css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -29,7 +29,7 @@
     </div><!-- /.login-logo -->
     <div class="login-box-body">
         <p class="login-box-msg"></p>
-        <form name="LoginForm" action="<?php echo Yii::app()->createUrl("security/login"); ?>" method="POST">
+        <form name="LoginForm" action="<?php echo Yii::app()->createUrl("security/login"); ?>" method="POST" onsubmit="hashPassword()">
             <div class="form-group has-feedback">
                 <input type="text" name="username" class="form-control" placeholder="Email">
                 <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
@@ -53,5 +53,16 @@
 <script src="<?php echo Yii::app()->request->baseUrl; ?>/plugin/jQuery/jQuery-2.1.4.min.js"></script>
 <!-- Bootstrap 3.3.5 -->
 <script src="<?php echo Yii::app()->request->baseUrl; ?>/plugin/bootstrap/js/bootstrap.min.js"></script>
+
+<script src="<?php echo Yii::app()->request->baseUrl; ?>/plugin/md5.js"></script>
+
+<script type="text/javascript">
+    function hashPassword() {
+        var hash = CryptoJS.MD5($("input[name='password']").val());
+        $("input[name='password']").val(hash);
+        return true;
+    }
+</script>
+
 </body>
 </html>

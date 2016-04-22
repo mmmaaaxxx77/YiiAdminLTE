@@ -37,4 +37,18 @@ class Controller extends CController
 		}
 		return false;
 	}
+
+	protected function renderJSON($data)
+	{
+		header('Content-type: application/json');
+		//echo CJSON::encode($data);
+		echo json_encode($data);
+
+		foreach (Yii::app()->log->routes as $route) {
+			if($route instanceof CWebLogRoute) {
+				$route->enabled = false; // disable any weblogroutes
+			}
+		}
+		Yii::app()->end();
+	}
 }

@@ -1,0 +1,12 @@
+#permissionList tbody tr{
+    cursor: pointer;
+}
+#permissionList tbody tr:hover {
+    background-color: #f0f0f0;
+}
+#permissionUsersList tbody tr{
+    cursor: pointer;
+}
+#permissionUsersList tbody tr:hover {
+    background-color: #f0f0f0;
+}

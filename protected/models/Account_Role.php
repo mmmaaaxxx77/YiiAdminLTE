@@ -8,8 +8,8 @@
  */
 class Account_Role extends CActiveRecord
 {
-
-
+    public $account_id;
+    public $role_id;
 
     public static function model($className = __CLASS__)
     {
@@ -23,12 +23,6 @@ class Account_Role extends CActiveRecord
 
     public function primaryKey() {
         return array('account_id', 'role_id');
-    }
-
-    public function relations(){
-        return array(
-            //'permission'=>array(self::BELONGS_TO, 'Permission', 'id')
-        );
     }
 
 }

@@ -8,8 +8,10 @@
  */
 class Role extends CActiveRecord
 {
-    public $name;
 
+    public $id;
+    public $name;
+    public $create_date;
 
     public static function model($className = __CLASS__)
     {

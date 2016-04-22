@@ -34,6 +34,9 @@ class UserIdentity extends CUserIdentity
 			$this->setState('email', $user->email);
 			$this->errorCode = self::ERROR_NONE;
 		}
+		//$user->last_login = new CDbExpression('NOW()');
+		Account::model()->updateByPk($user->id, array('last_login'=>new CDbExpression('NOW()')));
+
 		return !$this->errorCode;
 	}
 }

@@ -1,0 +1,7 @@
+#groupList tbody tr {
+    cursor: pointer;
+}
+
+#groupList tbody tr:hover {
+    background-color: #f0f0f0;
+}

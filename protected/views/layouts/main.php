@@ -10,7 +10,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <title>JohnnyDesign CMS</title>
 
     <?php include "css.php"?>
-
+    <?php include "gobalUrls.php"?>
 </head>
 <!--
 BODY TAG OPTIONS:
